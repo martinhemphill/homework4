@@ -19,28 +19,28 @@ var questionText = document.getElementById("question");
 // Available Questions
 var questions = [
 {
-    question: "question 1",
-    a:"1",
-    b:"2",
-    c:"3",
-    d:"4",
+    question: "What is the capital of the Republic in (The Phantom Menace)?",
+    a:"Tatooine",
+    b:"Naboo",
+    c:"Belsavis",
+    d:"Corusacnt",
+    answer:"d",
+},
+{
+    question: "Who is the Chancellor in the beginning of (The Phantom Menace)?",
+    a:"Chancellor Vallorum",
+    b:"Chancellor Palpatine",
+    c:"Chancellor Amidala",
+    d:"Chancellor Binks",
     answer:"a",
 },
 {
-    question: "question 2",
-    a:"1",
-    b:"2",
-    c:"3",
-    d:"4",
-    answer:"a",
-},
-{
-    question: "question 3",
-    a:"1",
-    b:"2",
-    c:"3",
-    d:"4",
-    answer:"a",
+    question: "Where is Palpatine's home planet?",
+    a:"Coruscant",
+    b:"Naboo",
+    c:"Alderran",
+    d:"Nar Shadda",
+    answer:"b",
 },
 {
     question: "question 4",
@@ -72,5 +72,57 @@ var questions = [
 var score = 0;
 var currentQuestion = 0;
 
+renderQuestion();
 
+// Render Progress
+progress.innerHTML = "Question " + parseInt(currentQuestion + 1);
+
+// Functions
+    // Render Question
+    function renderQuestion() {
+        questionText.innerHTML = questions[currentQuestion].question;
+        text0.innerHTML = questions[currentQuestion].a;
+        text1.innerHTML = questions[currentQuestion].b;
+        text2.innerHTML = questions[currentQuestion].c;
+        text3.innerHTML = questions[currentQuestion].d;
+    }
+
+    // Receive Input
+    button0.addEventListener("click",checkAnswer(a));
+    button1.addEventListener("click",checkAnswer(b));
+    button2.addEventListener("click",checkAnswer(c));
+    button3.addEventListener("click",checkAnswer(d));
+    
+
+    // Check Answer
+    function checkAnswer(answer) {
+        if( answer == questions[currentQuestion].answer){
+            score++;
+            answerIsCorrect();
+        }else{
+            answerIsWrong();
+        }
+        
+        if(currentQuestion < questions.length){
+            currentQuestion++;
+            renderQuestion();
+        }else{
+            gameOver();
+        }
+    }
+
+    // Correct Answer
+    function answerIsCorrect() {
+        score++
+    }
+
+    // Incorrect Answer
+    function answerIsWrong() {
+
+    }
+
+    // Game Over
+    function gameOver() {
+
+    }
 
